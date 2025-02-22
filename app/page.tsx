@@ -1,9 +1,11 @@
-
+import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
   return (
     <div>
-      Hello Ritik
+          <div className="grid-background"> </div>
+          <HeroSection/>
+      
       </div>
   );
 }

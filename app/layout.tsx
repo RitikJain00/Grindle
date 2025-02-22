@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
+import HeroSection from "@/components/HeroSection";
 
 const inter = Inter({ subsets: ['latin'] })
 
