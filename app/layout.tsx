@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from 'next/font/google'
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import Header from "@/components/Header";
+import Header from "@/components/Home/Header";
 
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
-import HeroSection from "@/components/HeroSection";
+import HeroSection from "@/components/Home/HeroSection";
 
 const inter = Inter({ subsets: ['latin'] })
 
