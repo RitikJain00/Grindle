@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import { ChevronDown, FileText, GraduationCap, LayoutDashboard, PenBox, StarsIcon } from 'lucide-react'
+import { checkUser } from '@/lib/checkUser'
 
 import {
   DropdownMenu,
@@ -15,7 +16,9 @@ import {
 
 
 
-const Header = () => {
+const Header = async () => {
+  await checkUser();
+
   return (
  
       <header className='fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60'>
@@ -58,7 +61,7 @@ const Header = () => {
             </DropdownMenuItem>
 
             <DropdownMenuItem>
-            <Link href={'/coner-letter'} className='flex items-center gap-2'>
+            <Link href={'/cover-letter'} className='flex items-center gap-2'>
               <PenBox className='h-4 w-4'/>
               <span className='hidden md:block'>Cover Letter</span>
             </Link>
