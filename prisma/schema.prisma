@@ -17,8 +17,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
 
-  industryId String?
-  industry   IndustryInsights? @relation(fields: [industryId], references: [id])
+  industry        String?
+  industryInsight IndustryInsights? @relation(fields: [industry], references: [industry])
 
   bio        String?
   experience Int?
@@ -77,10 +77,10 @@ model IndustryInsights {
   salaryRange Json[]
 
   growthRate  Float
-  demandLevel DemandLevel
+  demandLevel String?
   topSkills   String[]
 
-  marketOutlook MarketOutlook
+  marketOutlook String?
   keyTrends     String[]
 
   recommendedSkills String[]
@@ -88,16 +88,4 @@ model IndustryInsights {
   nextUpdate        DateTime // Consider setting a default update interval
 
   @@index([industry])
-}
-
-enum DemandLevel {
-  High
-  Medium
-  Low
-}
-
-enum MarketOutlook {
-  POSITIVE
-  NEUTRAL
-  NEGATIVE
 }
