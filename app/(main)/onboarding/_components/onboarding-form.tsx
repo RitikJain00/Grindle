@@ -1,14 +1,18 @@
 "use client"; 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+
+import { toast } from "sonner";
 
 import { onboardingSchema } from "@/lib/schema";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Loader2 } from "lucide-react";
+
 import {
   Card,
   CardContent,
@@ -27,8 +31,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import useFetch from "@/hooks/use-fetch";
+import { updateUser } from "@/actions/user";
 
-type OnboardingFormData = z.infer<typeof onboardingSchema>;
+
+
 
 interface Industry {
   id: string;
@@ -41,7 +48,14 @@ interface IndustryDataProps {
 }
 
 const OnBoardingForm: React.FC<IndustryDataProps> = ({ industries }) => {
+  const router = useRouter();
   const [selectedIndustry, setSelectedIndustry] = useState<Industry | null>(null);
+
+  const {
+    loading: updateLoading,
+    func: updateUserFn,
+    data: updateResult 
+  } = useFetch(updateUser)
 
   const {
     register,
@@ -49,15 +63,32 @@ const OnBoardingForm: React.FC<IndustryDataProps> = ({ industries }) => {
     formState: { errors },
     setValue,
     watch,
-  } = useForm<OnboardingFormData>({
+  } = useForm<onboardingSchema>({
     resolver: zodResolver(onboardingSchema),
   });
 
   const watchIndustry = watch("industry");
 
-  const onSubmit = (values: OnboardingFormData) => {
-    console.log("Form Data:", values);
+  const onSubmit = async (values: onboardingSchema) => {
+    try {
+      const formatttedIndustry = `${values.industry}-${values.subIndustry.toLowerCase().replace(/ /g, "-")}`;
+
+      await updateUserFn({
+        ...values, industry: formatttedIndustry
+      })
+    }catch(error){
+      console.error("Onboarding error:", error)
+    }
   };
+
+  useEffect(() => {
+    // @ts-ignore
+    if(updateResult?.success && !updateLoading){
+      toast.success("Profile completed successfully!")
+      router.push("/dashboard");
+      router.refresh();
+    }
+  },[updateResult, updateLoading])
 
   return (
     <div className="flex items-center justify-center bg-background">
@@ -164,8 +195,15 @@ const OnBoardingForm: React.FC<IndustryDataProps> = ({ industries }) => {
             </div>
 
             {/* Submit Button */}
-            <Button type="submit" className="w-full">
-              Complete Profile
+            <Button type="submit" disabled={updateLoading} className="w-full">
+            {updateLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Saving...
+                </>
+              ) : (
+                "Complete Profile"
+              )}
             </Button>
           </form>
         </CardContent>

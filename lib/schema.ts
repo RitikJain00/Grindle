@@ -70,3 +70,12 @@ export const coverLetterSchema = z.object({
   jobTitle: z.string().min(1, "Job title is required"),
   jobDescription: z.string().min(1, "Job description is required"),
 });
+
+
+export type onboardingSchema = z.infer<typeof onboardingSchema>;
+export type coverLetterSchema = z.infer<typeof coverLetterSchema>;
+export type resumeSchema = z.infer<typeof resumeSchema>;
+export type contactSchema= z.infer<typeof contactSchema>;
+export type entrySchema = z.infer<typeof entrySchema>;
+
+
