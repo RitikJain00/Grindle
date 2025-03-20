@@ -5,7 +5,7 @@ import { onboardingSchema } from "@/lib/schema";
 
 
 const useFetch = (cb: (...args: any) => Promise<any>) => {
-  const [data, setData] = useState(undefined);
+  const [data, setData] = useState<any>(undefined);
   const [loading, setLoading] = useState<boolean | undefined>(undefined);
   const [error, setError] = useState<Error | null>(null);
 
