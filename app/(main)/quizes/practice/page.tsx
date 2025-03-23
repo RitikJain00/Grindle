@@ -13,7 +13,7 @@ export default function MockInterviewPage () {
         <Link href="/quizes">
           <Button variant="link" className="gap-2 pl-0">
           <ArrowLeft className="h-4 w-4" />
-            Back to Interview Preparation
+            Back to Assessment Preparation
           </Button>
         </Link>
 
