@@ -2,7 +2,14 @@
 
 Grindle is a full-stack platform that simplifies and enhances job preparation for students and professionals. It offers personalized resume and cover letter generation using Gemini LLM, technical assessment preparation, and weekly-updated job market insights with automated analytics.
 
+---
 
+## 🎥 Project Demo
+
+📺 ([https://your-demo-link.com](https://drive.google.com/file/d/1UVuUmQNVjwdEsNbxFK-IeEaupoVY2Yy8/view?usp=sharing))  
+
+
+---
 
 ---
 
@@ -30,6 +37,26 @@ Grindle is a full-stack platform that simplifies and enhances job preparation fo
 
 ---
 
+## 🖼️ Screenshots
+
+
+
+| Home | Authentication |
+|----------------|-------------------|
+| ![home](assets/home.png) | ![Authentication](assets/auth.png) |
+
+| Industry Insights | Technical Quiz|
+|----------------|-------------------|
+| ![Insights](assets/insights.png) | ![Quiz](assets/quiz.png) | 
+
+| Resume Generator | Cover Letter Generator |
+|------------------|------------------------|
+| ![Resume](assets/resume.png) | ![CoverLetter](assets/cover.png) |
+
+
+
+
+
 ## 🧪 Tech Stack
 
 | Layer        | Technologies                                                           |
@@ -40,8 +67,6 @@ Grindle is a full-stack platform that simplifies and enhances job preparation fo
 | AI Services  | Gemini LLM (Resume & Cover Letter)                                     |
 | Automation   | Ingest (Industry Insight Updater)                                      |
 
-
 ---
-
 
 
